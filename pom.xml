@@ -6,7 +6,7 @@
     <groupId>com.tiarebalbi.store</groupId>
     <artifactId>compretudo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>Loja Compre Tudo</name>
     <description>Loja Compre Tudo</description>
