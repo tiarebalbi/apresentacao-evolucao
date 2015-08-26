@@ -24,6 +24,12 @@
         <java.version>1.8</java.version>
     </properties>
 
+    <modules>
+        <module>carrinho</module>
+        <module>produtos</module>
+        <module>registry</module>
+    </modules>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
