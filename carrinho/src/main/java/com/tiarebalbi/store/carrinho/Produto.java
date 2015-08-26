@@ -10,17 +10,12 @@ import java.math.BigDecimal;
  */
 public class Produto {
 
+    @JsonProperty("id")
     private String ref;
 
     private String nome;
 
     private BigDecimal valor;
-
-    public Produto(@JsonProperty String ref, @JsonProperty String nome, @JsonProperty BigDecimal valor) {
-        this.ref = ref;
-        this.nome = nome;
-        this.valor = valor;
-    }
 
     public String getRef() {
         return ref;
@@ -32,5 +27,17 @@ public class Produto {
 
     public BigDecimal getValor() {
         return valor;
+    }
+
+    public void setRef(String ref) {
+        this.ref = ref;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
     }
 }

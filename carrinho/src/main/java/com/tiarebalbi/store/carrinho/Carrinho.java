@@ -1,9 +1,6 @@
 package com.tiarebalbi.store.carrinho;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -22,12 +19,6 @@ public class Carrinho {
     private int quantidade;
 
     private Produto produto;
-
-    @PersistenceConstructor
-    public Carrinho(@JsonProperty @Value("#root.quantidade == 0 ? 1 :") int quantidade, @JsonProperty Produto produto) {
-        this.quantidade = quantidade;
-        this.produto = produto;
-    }
 
     @Override
     public String toString() {
@@ -51,6 +42,10 @@ public class Carrinho {
         return quantidade;
     }
 
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
     public Produto getProduto() {
         return produto;
     }
@@ -58,5 +53,4 @@ public class Carrinho {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
-
 }
