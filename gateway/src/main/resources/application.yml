@@ -1,16 +1,14 @@
-spring:
-  data:
-    mongodb:
-      database: loja-carrinho
-
 server:
-  port: ${PORT:7372}
+  port: ${PORT:9023}
+
 
 eureka:
   client:
     serviceUrl:
       defaultZone: ${vcap.services.eureka-service.credentials.uri:http://127.0.0.1:8761}/eureka/
 
-#logging:
-#  level:
-#    com.netflix: DEBUG
+zuul:
+  prefix: /api
+  routes:
+    produtos-service: /catalogo/**
+    carrinho-service: /loja/**

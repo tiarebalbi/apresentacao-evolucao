@@ -3,6 +3,8 @@ package com.tiarebalbi.store.carrinho;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
+
 /**
  * @author Tiarê Balbi Bonamini
  * @version 1.5.0
@@ -19,6 +21,8 @@ public class Carrinho {
     private int quantidade;
 
     private Produto produto;
+
+    private BigDecimal subtotal;
 
     @Override
     public String toString() {
@@ -52,5 +56,17 @@ public class Carrinho {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    public BigDecimal getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(BigDecimal subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public void calcularTotal() {
+        this.subtotal = produto.getValor().multiply(new BigDecimal(quantidade));
     }
 }

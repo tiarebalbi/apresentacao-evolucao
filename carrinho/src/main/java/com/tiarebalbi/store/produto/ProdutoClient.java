@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient("produtos-service")
 public interface ProdutoClient {
 
-    @RequestMapping(method = RequestMethod.GET, value = "/produto/{idProduto}")
+    @RequestMapping(method = RequestMethod.GET, value = "/produtos/{idProduto}")
     Produto consultarProduto(@PathVariable("idProduto") String idProduto);
 }

@@ -1,7 +1,5 @@
 package com.tiarebalbi.store.carrinho;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.math.BigDecimal;
 
 /**
@@ -10,34 +8,44 @@ import java.math.BigDecimal;
  */
 public class Produto {
 
-    @JsonProperty("id")
-    private String ref;
+    private String id;
 
     private String nome;
 
     private BigDecimal valor;
 
-    public String getRef() {
-        return ref;
-    }
 
     public String getNome() {
         return nome;
-    }
-
-    public BigDecimal getValor() {
-        return valor;
-    }
-
-    public void setRef(String ref) {
-        this.ref = ref;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    public BigDecimal getValor() {
+        return valor;
+    }
+
     public void setValor(BigDecimal valor) {
         this.valor = valor;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Produto{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", nome='").append(nome).append('\'');
+        sb.append(", valor=").append(valor);
+        sb.append('}');
+        return sb.toString();
     }
 }

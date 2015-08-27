@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import java.math.BigDecimal;
 
@@ -17,6 +18,7 @@ public class Produto {
 
 
     @Id
+    @RestResource(exported = true)
     private String id;
 
     @Version
@@ -62,4 +64,6 @@ public class Produto {
     public BigDecimal getValor() {
         return valor;
     }
+
+
 }

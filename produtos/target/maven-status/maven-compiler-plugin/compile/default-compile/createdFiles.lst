@@ -1,1 +1,3 @@
 com/tiarebalbi/store/ProdutosApplication.class
+com/tiarebalbi/store/produtos/Produto.class
+com/tiarebalbi/store/produtos/ProdutoRepository.class
