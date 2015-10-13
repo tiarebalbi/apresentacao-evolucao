@@ -7,7 +7,9 @@ http://localhost:9023/
 
 API: 
 1. http://localhost:9023/api/catalogo/produtos 
+
 2. http://localhost:9023/api/loja/carrinho
+
 3. http://localhost:9023/api/loja/carrinho/adicionar
 
 
