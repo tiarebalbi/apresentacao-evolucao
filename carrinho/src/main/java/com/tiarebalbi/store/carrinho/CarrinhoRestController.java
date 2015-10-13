@@ -41,10 +41,12 @@ public class CarrinhoRestController {
 
         Produto produto = this.produtoClient.consultarProduto(carrinho.getProduto().getId());
         carrinho.setProduto(produto);
-
         carrinho.calcularTotal();
 
-        return new ResponseEntity<>(this.carrinhoRepository.save(carrinho), HttpStatus.OK);
+        LOGGER.info("Registrando um novo produto no carrinho.");
+
+        Carrinho carrinhoSalvo = this.carrinhoRepository.save(carrinho);
+        return new ResponseEntity<>(carrinhoSalvo, HttpStatus.OK);
     }
 
     /**
