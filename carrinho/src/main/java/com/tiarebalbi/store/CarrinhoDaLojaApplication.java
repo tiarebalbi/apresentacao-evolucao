@@ -21,11 +21,6 @@ public class CarrinhoDaLojaApplication {
 
     @Bean
     public InitializingBean reset(CarrinhoRepository repository) {
-        return () -> {
-
-            // Resetando o carrinho
-            repository.deleteAll();
-
-        };
+        return repository::deleteAll;
     }
 }

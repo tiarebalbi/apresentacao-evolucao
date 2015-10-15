@@ -29,7 +29,7 @@
         <module>produtos</module>
         <module>registry</module>
         <module>gateway</module>
-        <module>config-server</module>
+        <module>circuit-monitor</module>
     </modules>
 
     <dependencies>

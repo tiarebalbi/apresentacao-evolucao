@@ -14,4 +14,7 @@ public interface CarrinhoRepository extends MongoRepository<Carrinho, String> {
     @Override
     @RestResource(exported = false)
     Carrinho save(Carrinho s);
+
+    @RestResource(exported = false)
+    Carrinho findByProdutoId(String produtoId);
 }

@@ -39,14 +39,42 @@ public class CarrinhoRestController {
     @ResponseBody
     ResponseEntity<Carrinho> salvar(@RequestBody Carrinho carrinho) {
 
-        Produto produto = this.produtoClient.consultarProduto(carrinho.getProduto().getId());
-        carrinho.setProduto(produto);
-        carrinho.calcularTotal();
+        try {
 
-        LOGGER.info("Registrando um novo produto no carrinho.");
+            // Consulta o serviço de produtos para identificar as informações da referencia informada.
+            Produto produto = this.produtoClient.consultarProduto(carrinho.getProduto().getId());
 
-        Carrinho carrinhoSalvo = this.carrinhoRepository.save(carrinho);
-        return new ResponseEntity<>(carrinhoSalvo, HttpStatus.OK);
+            if (carrinhoContain(produto)) {
+                final int quantidadeOriginal = carrinho.getQuantidade();
+
+                carrinho = this.carrinhoRepository.findByProdutoId(produto.getId());
+                int quantidade = carrinho.getQuantidade();
+
+                carrinho.setQuantidade(quantidade + quantidadeOriginal);
+            } else {
+                carrinho.setProduto(produto);
+            }
+
+            carrinho.calcularTotal();
+
+            LOGGER.info("Registrando um novo produto no carrinho.");
+
+            Carrinho carrinhoSalvo = this.carrinhoRepository.save(carrinho);
+            return new ResponseEntity<>(carrinhoSalvo, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    private boolean carrinhoContain(Produto produto) {
+
+        long totalProdutos = carrinhoRepository.findAll().stream()
+                .map(x -> x.getProduto())
+                .filter(x -> x.getId().equals(produto.getId()))
+                .count();
+
+        return totalProdutos > 0;
     }
 
     /**

@@ -17,4 +17,4 @@ Eureka:
 http://localhost:8761/
 
 Example 
-curl -H "Content-Type: application/json" -X POST -d '{"produto" : {"id":"561c49e4a8263f2d7630d06e"}, "quantidade":3}' http://localhost:9023/api/loja/carrinho/adicionar
+curl -H "Content-Type: application/json" -X POST -d '{"produto" : {"id":"561fd179a8265d64037eb8c8"}, "quantidade":3}' http://localhost:9023/api/loja/carrinho/adicionar
